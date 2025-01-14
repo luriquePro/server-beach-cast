@@ -1,4 +1,6 @@
 import "dotenv/config";
+import "./util/module-alias";
+
 import express, { Application } from "express";
 import mongoose from "mongoose";
 import { appRouters } from "./routes";
@@ -13,6 +15,7 @@ class App {
 		this.isProduction = process.env.NODE_ENV === "production";
 		this.express.use("/assets", express.static(__dirname + "./public/assets"));
 		this.express.use("/", express.static(__dirname + "./public"));
+		this.express.use(express.json());
 
 		this.isReady = false;
 	}
@@ -23,7 +26,6 @@ class App {
 		await this.database();
 		this.routes();
 		this.middlewares();
-		this.express.use(express.json());
 
 		this.isReady = true;
 
@@ -33,6 +35,10 @@ class App {
 	public listen(port: number, callback?: () => void) {
 		if (!this.isReady) throw new Error("App is not started yet");
 		return this.express.listen(port, callback);
+	}
+
+	public getApp(): Application {
+		return this.express;
 	}
 
 	private routes(): void {
