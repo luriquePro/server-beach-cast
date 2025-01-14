@@ -1,8 +1,8 @@
-import { Usecase } from "@src/@types/main";
 import { Request, Response } from "express";
+import { IForecastUsecase } from "./GetForecastForLoggedUser.interfaces";
 
 class GetForecastForLoggedUserController {
-	constructor(private readonly ForecastUsecase: Usecase) {}
+	constructor(private readonly ForecastUsecase: IForecastUsecase) {}
 
 	public async handle(_: Request, res: Response): Promise<void> {
 		const result = await this.ForecastUsecase.execute();
