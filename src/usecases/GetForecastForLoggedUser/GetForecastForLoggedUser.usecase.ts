@@ -1,4 +1,4 @@
-class GetForecastForLoggedUserService {
+class GetForecastForLoggedUserUsecase {
 	constructor() {}
 
 	public async execute() {
@@ -8,4 +8,4 @@ class GetForecastForLoggedUserService {
 	}
 }
 
-export { GetForecastForLoggedUserService };
+export { GetForecastForLoggedUserUsecase };
