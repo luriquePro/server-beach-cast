@@ -19,6 +19,9 @@ const config: Config = {
 	},
 	testPathIgnorePatterns: ["<rootDir>/dist/", "<rootDir>/node_modules/"],
 	coveragePathIgnorePatterns: ["<rootDir>/dist/", "<rootDir>/node_modules/"],
+	transform: { "^.+\\.tsx?$": ["ts-jest", { isolatedModules: true }] },
+	moduleFileExtensions: ["ts"],
+	verbose: true,
 };
 
 export default config;
